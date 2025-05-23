@@ -32,5 +32,5 @@ export default defineConfig({
     introspect: {
         casing: 'preserve',
     },
-    schemaFilter: ['public', 'users'],
+    schemaFilter: ['public', 'users', 'masters'],
 })

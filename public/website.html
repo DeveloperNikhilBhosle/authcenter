@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AuthCenter - Portfolio</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Static Header */
+        header {
+            background: #000;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        /* Container for main content */
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 80px;
+            /* To avoid content being hidden under the fixed header */
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 50px;
+        }
+
+        /* Section Titles */
+        h2 {
+            font-size: 2rem;
+            color: #000;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+
+        /* Paragraphs */
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* List Items */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Small Responsive Tweaks */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Static Header -->
+    <header>
+        <div class="container">
+            <h1>AuthCenter</h1>
+        </div>
+    </header>
+
+    <!-- Vision & Objective Section -->
+    <section id="vision-objective" style="margin-top: 150px;">
+        <div class="container">
+            <h2>Vision & Objective</h2>
+            <p>Our vision is to create a seamless and secure authentication platform that simplifies user access
+                management for modern applications. The objective of AuthCenter is to provide businesses with an
+                easy-to-integrate solution that guarantees security and scalability while offering an exceptional user
+                experience.</p>
+        </div>
+    </section>
+
+    <!-- Scope Section -->
+    <section id="scope">
+        <div class="container">
+            <h2>Scope</h2>
+            <p>AuthCenter will support multiple authentication protocols such as OAuth 2.0, OpenID Connect, and SAML. It
+                will be capable of handling various forms of authentication including social logins, SSO (Single
+                Sign-On), and multi-factor authentication (MFA). This project will cater to web applications, mobile
+                apps, and enterprise-level software.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <h2>Features</h2>
+            <ul>
+                <li>Single Sign-On (SSO) integration</li>
+                <li>Multi-Factor Authentication (MFA) support</li>
+                <li>OAuth 2.0 / OpenID Connect compatibility</li>
+                <li>Admin Dashboard for easy user management</li>
+                <li>Customizable login flows and security policies</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech-stack">
+        <div class="container">
+            <h2>Tech Stack</h2>
+            <p>The project utilizes the following technologies:</p>
+            <ul>
+                <li>Backend: Node.js, Express</li>
+                <li>Frontend: React, Redux</li>
+                <li>Database: MongoDB</li>
+                <li>Authentication Protocols: OAuth 2.0, OpenID Connect</li>
+                <li>Deployment: Docker, AWS, Nginx</li>
+                <li>Security: JWT (JSON Web Tokens), bcrypt</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Credits Section -->
+    <!-- <section id="credits">
+        <div class="container">
+            <h2>Credits</h2>
+            <p>Special thanks to the 1 Finance P2P Engineering Team for their invaluable contributions and support in
+                the development of AuthCenter.</p>
+        </div>
+    </section> -->
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AuthCenter | Made with ❤️ by the 1 Finance P2P Engineering Team</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
