@@ -109,7 +109,7 @@ export class UserauthService {
         const hasAccess = await this.auth.db.select().from(user_productsInMasters)
             .where(and(eq(user_productsInMasters.user_code, user[0].code), eq(user_productsInMasters.is_active, true), eq(user_productsInMasters.product_id, Number(productId))));
 
-        if (!hasAccess) //throw new ForbiddenException('Access denied to this product'); // Redirect to same product 401 Page 
+        if (hasAccess.length == 0) //throw new ForbiddenException('Access denied to this product'); // Redirect to same product 401 Page 
         {
             return client[0].un_authorised_url;
         }

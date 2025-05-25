@@ -50,7 +50,6 @@ export class UserauthController {
     // return res.redirect(`${response}`);
     return res.redirect(302, response ?? '');
     return ApiResponse.ReturnResponse(200, "Token Generated Successfully");
-
   }
 
   @Post('token')

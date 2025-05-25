@@ -4,9 +4,17 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { AuthCenterDBModule } from './dbmodels/authcenter/authcenter.drizzle.module';
 import { UserauthModule } from './auth/userauth/userauth.module';
+import { StaticPagesModule } from './static-pages/static-pages/static-pages.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(process.cwd(), 'public'),
+      exclude: ['/api*'],
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -17,7 +25,8 @@ import { UserauthModule } from './auth/userauth/userauth.module';
         url: process.env.AUTH_CENTER_DATABASE_URL ?? ""
       }),
     }),
-    UserauthModule
+    UserauthModule,
+    StaticPagesModule
 
   ],
   controllers: [AppController],

@@ -5,6 +5,7 @@ import { join } from 'path';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { readFileSync } from 'fs';
 import { UserauthModule } from './auth/userauth/userauth.module';
+import { StaticPagesModule } from './static-pages/static-pages/static-pages.module';
 
 
 async function bootstrap() {
@@ -31,7 +32,7 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config, {
-    include: [UserauthModule],
+    include: [UserauthModule, StaticPagesModule],
   });
   SwaggerModule.setup('api', app, document); // Swagger UI served at /api
 
