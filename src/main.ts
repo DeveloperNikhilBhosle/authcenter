@@ -109,6 +109,7 @@ async function bootstrap() {
       /* Add your brand name next to the logo */
       .swagger-ui .topbar .topbar-wrapper .link::after {
         content: "AuthCenter";
+        href: "/#"
         color: white;
         font-weight: bold;
         font-size: 22px;

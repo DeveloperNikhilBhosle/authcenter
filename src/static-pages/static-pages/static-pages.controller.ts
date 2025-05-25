@@ -35,4 +35,18 @@ export class StaticPagesController {
       }
     });
   }
+
+  @Get('/admin-login')
+  getAdminLoginPage(@Res() res: Response) {
+    // Use process.cwd() to get project root (where you run `npm start` from)
+    const filePath = join(process.cwd(), 'public', 'login.html');
+    console.log('Trying to send file:', filePath);
+
+    res.sendFile(filePath, (err) => {
+      if (err) {
+        console.error('❌ Error sending file:', err);
+        res.status(500).send('Internal Server Error: Cannot serve website.html');
+      }
+    });
+  }
 }
