@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { AuthCenterDBModule } from './dbmodels/authcenter/authcenter.drizzle.module';
+import { UserauthModule } from './auth/userauth/userauth.module';
 
 @Module({
   imports: [
@@ -15,7 +16,9 @@ import { AuthCenterDBModule } from './dbmodels/authcenter/authcenter.drizzle.mod
         // url: process.env.AUTH_CENTER_DATABASE_URL,
         url: process.env.AUTH_CENTER_DATABASE_URL ?? ""
       }),
-    })
+    }),
+    UserauthModule
+
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -4,6 +4,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { readFileSync } from 'fs';
+import { UserauthModule } from './auth/userauth/userauth.module';
 
 
 async function bootstrap() {
@@ -26,9 +27,12 @@ async function bootstrap() {
     // .setDescription('API description')
     // .setVersion('1.0')
     // .addTag('example') // Optional: Group your endpoints by tags
+    // .
     .build();
 
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, config, {
+    include: [UserauthModule],
+  });
   SwaggerModule.setup('api', app, document); // Swagger UI served at /api
 
   // SwaggerModule.setup('/swagger-json', app, document); // serve JSON separately

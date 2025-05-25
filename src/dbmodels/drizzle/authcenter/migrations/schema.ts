@@ -1,4 +1,4 @@
-import { pgTable, pgSchema, unique, serial, uuid, varchar, boolean, timestamp, text, foreignKey, integer, primaryKey } from "drizzle-orm/pg-core"
+import { pgTable, pgSchema, unique, serial, uuid, varchar, boolean, timestamp, text, foreignKey, integer, bigint, primaryKey } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
 export const masters = pgSchema("masters");
@@ -56,6 +56,37 @@ export const product_rolesInMasters = masters.table("product_roles", {
 			name: "product_roles_product_id_fkey"
 		}),
 ]);
+
+export const google_clientsInMasters = masters.table("google_clients", {
+	id: serial().primaryKey().notNull(),
+	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
+	product_id: bigint({ mode: "number" }).notNull(),
+	client_id: text().notNull(),
+	client_secret: text().notNull(),
+	redirect_uri: text().notNull(),
+	is_active: boolean().default(true).notNull(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+	auth_code: text(),
+	unauthorised_url: text(),
+	authorised_url: text(),
+}, (table) => [
+	unique("google_clients_product_id_key").on(table.product_id),
+]);
+
+export const user_google_profileInMasters = masters.table("user_google_profile", {
+	id: serial().notNull(),
+	google_id: text(),
+	email: text().notNull(),
+	verified_email: boolean().notNull(),
+	name: text(),
+	given_name: text(),
+	family_name: text(),
+	picture: text(),
+	hd: text(),
+	is_active: boolean().default(true),
+	created_at: timestamp({ mode: 'string' }).default(sql`CURRENT_TIMESTAMP`),
+});
 
 export const user_productsInMasters = masters.table("user_products", {
 	user_code: uuid().notNull(),
