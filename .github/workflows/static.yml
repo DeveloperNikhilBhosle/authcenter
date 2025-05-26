@@ -17,7 +17,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Pages
@@ -26,7 +26,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: './docs'  # ← Ensure this path exists and contains index.html
+          path: './docs'  # Make sure this folder exists and contains your site files
 
       - name: Deploy to GitHub Pages
         id: deployment
