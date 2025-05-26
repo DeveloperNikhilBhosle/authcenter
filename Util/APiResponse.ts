@@ -5,7 +5,7 @@ import { ApiAcceptedResponse } from "@nestjs/swagger";
 export class ApiResponse {
     static ReturnResponse(status: number, message: string, object?: any) {
         if (status == 200) {
-            return { status: 201, message: message, data: object };
+            return { status: 200, message: message, data: object };
         } else if (status == 201) {
             return ApiAcceptedResponse(object);
         } else if (status == 400) {

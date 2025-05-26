@@ -7,6 +7,10 @@ import { UserauthModule } from './auth/userauth/userauth.module';
 import { StaticPagesModule } from './static-pages/static-pages/static-pages.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { CryptoService } from './auth/crypto_service';
+import { UsersModule } from './admin/users/users.module';
+import { MastersModule } from './admin/masters/masters.module';
+import { ProductsModule } from './admin/products/products.module';
 
 
 @Module({
@@ -26,10 +30,13 @@ import { join } from 'path';
       }),
     }),
     UserauthModule,
-    StaticPagesModule
+    StaticPagesModule,
+    UsersModule,
+    MastersModule,
+    ProductsModule,
 
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, CryptoService],
 })
 export class AppModule { }

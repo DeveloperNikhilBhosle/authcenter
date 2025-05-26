@@ -5,10 +5,14 @@ import { eq, and } from 'drizzle-orm';
 import { firstValueFrom } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
 import { JwtService } from '@nestjs/jwt';
+import { CryptoService } from '../crypto_service';
 
 @Injectable()
 export class UserauthService {
-    constructor(private readonly auth: AuthCenterdrizzleService, private readonly httpService: HttpService, private jwtService: JwtService,) { }
+    constructor(private readonly auth: AuthCenterdrizzleService
+        , private readonly httpService: HttpService
+        , private jwtService: JwtService
+        , private readonly cryptoService: CryptoService) { }
 
     async googleInitiate(productId: number, productAuthId: string) {
         const product = await this.auth.db.select({
@@ -71,12 +75,12 @@ export class UserauthService {
         console.log(userInfo, 'userinfo');
 
         // Find or create user
-        let user = await this.auth.db.select().from(usersInMasters).where(and(eq(usersInMasters.email, userInfo.email), eq(usersInMasters.is_active, true)));
+        let user = await this.auth.db.select().from(usersInMasters).where(and(eq(usersInMasters.email, this.cryptoService.encrypt(userInfo.email)), eq(usersInMasters.is_active, true)));
 
         //#region Save Google Profile
 
         const oldGoogleProfile = await this.auth.db.select().from(user_google_profileInMasters)
-            .where(and(eq(user_google_profileInMasters.email, userInfo.email), eq(user_google_profileInMasters.is_active, true)));
+            .where(and(eq(user_google_profileInMasters.email, this.cryptoService.encrypt(userInfo.email)), eq(user_google_profileInMasters.is_active, true)));
 
         oldGoogleProfile.forEach(async g => {
             g.is_active = false;
@@ -85,12 +89,12 @@ export class UserauthService {
 
         const obj = {
             google_id: userInfo.id,
-            email: userInfo.email,
+            email: this.cryptoService.encrypt(userInfo.email),
             verified_email: userInfo.verified_email,
             name: userInfo.name,
             given_name: userInfo.given_name,
             family_name: userInfo.family_name,
-            picture: userInfo.picture,
+            picture: this.cryptoService.encrypt(userInfo.picture),
             hd: userInfo.hd
         }
         await this.auth.db.insert(user_google_profileInMasters).values(obj);

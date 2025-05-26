@@ -4,6 +4,7 @@ import { UserauthController } from './userauth.controller';
 import { HttpModule, HttpService } from '@nestjs/axios';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
+import { CryptoService } from '../crypto_service';
 
 
 @Module({
@@ -18,6 +19,6 @@ import { JwtModule } from '@nestjs/jwt';
   ],
 
   controllers: [UserauthController],
-  providers: [UserauthService],
+  providers: [UserauthService, CryptoService],
 })
 export class UserauthModule { }
