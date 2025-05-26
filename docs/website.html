@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AuthCenter - Identity Platform</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./AuthCenter_Logo.png" />
+
+    <!-- Spirits Soft font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Spirits+Soft&display=swap" rel="stylesheet" />
+
+
+    <!-- Spirits Soft font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Spirits+Soft&display=swap" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'spirits-soft';
+            background-color: #fff;
+            color: #000;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Header with Sticky Navigation */
+        header {
+            background-color: #144b6e;
+            color: #fff;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .logo a {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        section {
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+
+        }
+
+        section:nth-child(even) {
+            background-color: #3C9279;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section h2 {
+            margin-top: 50px;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 60px;
+            background: #144b6e;
+            margin: 10px auto 0;
+        }
+
+        section p,
+        section ul {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        ul li {
+            margin-bottom: 12px;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .tech-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            width: 260px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .scope-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            /* width: 460px; */
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .scope-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Vision section - flex layout */
+        #vision {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+            padding: 80px 20px;
+            gap: 40px;
+            max-width: 960px;
+            margin: 0 auto 60px auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        #vision .vision-text {
+            flex: 1;
+        }
+
+        #vision h2 {
+            margin-bottom: 25px;
+        }
+
+        #vision .vision-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        #vision .vision-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            max-height: 320px;
+            object-fit: cover;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            #vision {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #vision .vision-image {
+                text-align: center;
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                margin-top: 10px;
+            }
+
+            .tech-stack {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        footer {
+            background-color: #144b6e;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header with Logo -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="./AuthCenter_Logo.png" alt="AuthCenter Logo" />
+                <a href="#">AuthCenter</a>
+            </div>
+            <nav>
+                <a href="#vision">Vision</a>
+                <a href="#objective">Objective</a>
+                <a href="#scope">Scope</a>
+                <a href="#technology">Technology</a>
+                <a href="api">API</a>
+                <a href="admin-login">Admin Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Vision Section -->
+    <section id="vision">
+        <div class="vision-text">
+            <h2>Vision</h2>
+            <p>
+                AuthCenter is committed to simplifying identity and access management through a secure,
+                scalable, and elegant developer-first platform. Our mission is to help teams build with confidence.
+            </p>
+        </div>
+        <div class="vision-image">
+            <img src="./visionImg.jpg" alt="Vision Illustration" />
+        </div>
+    </section>
+
+    <!-- Objective Section -->
+    <section id="objective">
+        <h2>Objective</h2>
+        <p>
+            To provide a centralized, extensible, and secure authentication layer that can be seamlessly
+            integrated with modern architectures. AuthCenter enables SSO, secure token handling, RBAC,
+            and robust user verification.
+        </p>
+    </section>
+
+    <!-- Scope Section -->
+    <section id="scope">
+        <h2>Scope</h2>
+        <div class="tech-stack">
+            <div class="scope-item" style="background: #f9f9f9;">
+                <h3>SSO</h3>
+                <p>Unified login across multiple apps and services.</p>
+            </div>
+            <div class="scope-item" style="background: #f9f9f9;">
+                <h3>Token Management</h3>
+                <p>Secure issuing and refreshing of access tokens.</p>
+            </div>
+            <div class="scope-item" style="background: #f9f9f9;">
+                <h3>User Management</h3>
+                <p>Signup, profile update, locking, and deletion.</p>
+            </div>
+
+            <div class="scope-item" style="background: #f9f9f9;">
+                <h3>RBAC</h3>
+                <p>Fine-grained Role-Based Access Control policies.</p>
+            </div>
+            <div class="scope-item" style="background: #f9f9f9;">
+                <h3>OTP Verification</h3>
+                <p>Secure email or SMS-based user verification.</p>
+            </div>
+            <div class="scope-item" style="background: #f9f9f9;">
+                <h3>Alerts Engine</h3>
+                <p>Sends monthly notifications to product owners about active user logins and assigned roles. </p>
+            </div>
+
+
+        </div>
+
+
+        <!-- <ul>
+            <li><strong>SSO:</strong> Unified login across multiple apps and services.</li>
+            <li><strong>Token Management:</strong> Secure issuing and refreshing of access tokens.</li>
+            <li><strong>User Management:</strong> Signup, profile update, locking, and deletion.</li>
+            <li><strong>RBAC:</strong> Fine-grained Role-Based Access Control policies.</li>
+            <li><strong>OTP Verification:</strong> Secure email or SMS-based user verification.</li>
+        </ul> -->
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology">
+        <h2>Technology</h2>
+        <div class="tech-stack">
+            <div class="tech-item" style="background: #f9f9f9;">
+                <h3>NestJS</h3>
+                <p>A progressive Node.js framework for building scalable, testable applications.</p>
+            </div>
+            <div class="tech-item">
+                <h3>PostgreSQL</h3>
+                <p>A powerful, open-source relational database system used for storing user and role data securely.</p>
+            </div>
+            <div class="tech-item" style="background: #f9f9f9;">
+                <h3>AES-256</h3>
+                <p>AES-256 encryption offers strong protection for data at rest, ensuring robust security.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Version 1.0.0 | 26 May 2025</p>
+    </footer>
+
+</body>
+
+</html>
